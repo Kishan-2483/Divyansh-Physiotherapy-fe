@@ -16,23 +16,23 @@ const PricingCard = ({ pkg }) => {
 
   const cardStyle = pkg.isPopular
     ? {
-        ...baseStyle,
-        transform: hovered ? 'scale(1.08)' : 'scale(1.05)',
-        boxShadow: hovered
-          ? '0 28px 55px rgba(0, 128, 128, 0.28)'
-          : '0 20px 40px rgba(0, 128, 128, 0.15)',
-        border: '2px solid var(--primary)',
-      }
+      ...baseStyle,
+      transform: hovered ? 'scale(1.08)' : 'scale(1.05)',
+      boxShadow: hovered
+        ? '0 28px 55px rgba(0, 128, 128, 0.28)'
+        : '0 20px 40px rgba(0, 128, 128, 0.15)',
+      border: '2px solid var(--primary)',
+    }
     : {
-        ...baseStyle,
-        transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
-        boxShadow: hovered
-          ? '0 20px 40px rgba(0, 128, 128, 0.18)'
-          : '0 10px 30px rgba(0,0,0,0.05)',
-        border: hovered
-          ? '2px solid var(--primary)'
-          : '1px solid rgba(255,255,255,0.4)',
-      };
+      ...baseStyle,
+      transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
+      boxShadow: hovered
+        ? '0 20px 40px rgba(0, 128, 128, 0.18)'
+        : '0 10px 30px rgba(0,0,0,0.05)',
+      border: hovered
+        ? '2px solid var(--primary)'
+        : '1px solid rgba(255,255,255,0.4)',
+    };
 
   return (
     <div
@@ -90,7 +90,7 @@ const Pricing = () => {
   const packages = [
     {
       title: "Basic Consultation",
-      price: "₹500 / session",
+      price: "₹400 / session",
       features: [
         "In-depth Physiotherapy Assessment",
         "Basic Exercise Prescription",
@@ -101,7 +101,7 @@ const Pricing = () => {
     },
     {
       title: "Standard Plan",
-      price: "₹4,500 / 10 sessions",
+      price: "₹3,800 / 10 sessions",
       features: [
         "Everything in Basic",
         "Advanced Manual Therapy",
@@ -112,7 +112,7 @@ const Pricing = () => {
     },
     {
       title: "Home Visit Care",
-      price: "₹800 / session",
+      price: "₹600 / session",
       features: [
         "Complete Therapy at Home",
         "Personalized Care for Seniors/Post-Op",
