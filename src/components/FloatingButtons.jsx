@@ -42,27 +42,78 @@ const FloatingButtons = () => {
           .side-btn:hover .side-btn-text {
             opacity: 1;
           }
+          .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+          }
+          .whatsapp-btn:hover {
+            transform: scale(1.05);
+          }
+          .whatsapp-label {
+            display: inline;
+          }
+          @media (max-width: 480px) {
+            .side-btn {
+              width: 38px;
+              height: 38px;
+              font-size: 1rem;
+            }
+            .side-btn-icon {
+              min-width: 38px;
+            }
+            .side-btn:hover {
+              width: 150px;
+            }
+            .whatsapp-btn {
+              padding: 10px 14px;
+              border-radius: 50%;
+              width: 52px;
+              height: 52px;
+              justify-content: center;
+              bottom: 16px;
+              right: 16px;
+            }
+            .whatsapp-label {
+              display: none;
+            }
+          }
         `}
       </style>
 
       {/* Right Side Vertical Buttons */}
-      <div style={{
-        position: 'fixed',
-        right: '0',
-        top: '30%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-end',
-        gap: '10px',
-        zIndex: 1000,
-        transform: 'translateY(-50%)'
-      }}>
+      <div
+        style={{
+          position: 'fixed',
+          right: '0',
+          top: '30%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          gap: '10px',
+          zIndex: 1000,
+          transform: 'translateY(-50%)',
+        }}
+      >
         {/* Call Button */}
         <a href="tel:+918318428997" className="side-btn">
           <span className="side-btn-icon">📞</span>
           <span className="side-btn-text">Call Us</span>
         </a>
-        
+
         {/* Book Appointment Button */}
         <a href="#contact" className="side-btn">
           <span className="side-btn-icon">📅</span>
@@ -71,32 +122,14 @@ const FloatingButtons = () => {
       </div>
 
       {/* WhatsApp Button */}
-      <a 
-        href="https://wa.me/918318428997" 
-        target="_blank" 
+      <a
+        href="https://wa.me/918318428997"
+        target="_blank"
         rel="noopener noreferrer"
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          backgroundColor: '#25D366',
-          color: 'white',
-          padding: '10px 20px',
-          borderRadius: '30px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          textDecoration: 'none',
-          fontWeight: 'bold',
-          fontSize: '1rem',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-          zIndex: 1000,
-          transition: 'transform 0.3s ease'
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        className="whatsapp-btn"
       >
-        <span style={{ fontSize: '1.5rem' }}>💬</span> Chat With Us
+        <span style={{ fontSize: '1.5rem' }}>💬</span>
+        <span className="whatsapp-label">Chat With Us</span>
       </a>
     </>
   );
