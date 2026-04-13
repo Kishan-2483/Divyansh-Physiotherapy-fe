@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Brain, HeartCrack, CircleDot, Heart, Droplets,
+  Wind, HeartPulse, Activity, Stethoscope
+} from 'lucide-react';
 
 const CardiacRehabPhysio = () => {
   const cardiacServices = [
-    { title: "Physiotherapy for Stroke Rehab", icon: "🧠", link: "#" },
-    { title: "Physiotherapy for Cardiomyopathy", icon: "❤️‍🩹", link: "#" },
-    { title: "Physiotherapy for Vascular Disease", icon: "🦵", link: "#" },
-    { title: "Physiotherapy for Pericardial Disease", icon: "🫀", link: "#" },
-    { title: "Physiotherapy for Deep Vein Thrombosis", icon: "🩸", link: "#" },
-    { title: "Physiotherapy for Ischaemic Lung Disease", icon: "🫁", link: "#" },
-    { title: "Physiotherapy for Coronary Artery Disease", icon: "❤️", link: "#" },
-    { title: "Physiotherapy for Rheumatic Heart Disease", icon: "💓", link: "#" },
-    { title: "Physiotherapy for Hypertension", icon: "🩺", link: "#" }
+    { title: "Physiotherapy for Stroke Rehab", icon: <Brain size={48} />, link: "#" },
+    { title: "Physiotherapy for Cardiomyopathy", icon: <HeartCrack size={48} />, link: "#" },
+    { title: "Physiotherapy for Vascular Disease", icon: <CircleDot size={48} />, link: "#" },
+    { title: "Physiotherapy for Pericardial Disease", icon: <Heart size={48} />, link: "#" },
+    { title: "Physiotherapy for Deep Vein Thrombosis", icon: <Droplets size={48} />, link: "#" },
+    { title: "Physiotherapy for Ischaemic Lung Disease", icon: <Wind size={48} />, link: "#" },
+    { title: "Physiotherapy for Coronary Artery Disease", icon: <HeartPulse size={48} />, link: "#" },
+    { title: "Physiotherapy for Rheumatic Heart Disease", icon: <Activity size={48} />, link: "#" },
+    { title: "Physiotherapy for Hypertension", icon: <Stethoscope size={48} />, link: "#" }
   ];
 
   return (
@@ -32,7 +36,16 @@ const CardiacRehabPhysio = () => {
             alignItems: 'center',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>{service.icon}</div>
+            <div style={{
+              marginBottom: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '80px',
+              color: 'var(--primary, #2c7a7b)',
+            }}>
+              {service.icon}
+            </div>
             <h3 style={{ fontSize: '1.1rem', color: '#333', marginBottom: '0.5rem', fontWeight: '500', minHeight: '40px' }}>{service.title}</h3>
             <Link to={service.link} style={{
               color: '#0000ee',

@@ -1,18 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Stethoscope, Ribbon, UserRound } from 'lucide-react';
 
 const PostChemoPhysio = () => {
   const chemoServices = [
-    { title: "Physiotherapy In Cancer Recovery", icon: "🧑‍⚕️", link: "#" },
-    { title: "Physiotherapy Post Cancer Surgery", icon: "🎗️", link: "#" }
+    { title: "Physiotherapy In Cancer Recovery", icon: <Stethoscope size={56} />, link: "#" },
+    { title: "Physiotherapy Post Cancer Surgery", icon: <Ribbon size={56} />, link: "#" }
   ];
 
   return (
     <div className="container animate-fade-in" style={{ paddingTop: '8rem', paddingBottom: '4rem' }}>
       
-      {/* Optional hero image place holder to match reference UI's top graphic */}
+      {/* Optional hero icon to match reference UI's top graphic */}
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <div style={{ fontSize: '6rem' }}>👴👩‍⚕️</div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', color: 'var(--primary, #2c7a7b)' }}>
+          <UserRound size={64} />
+          <Stethoscope size={64} />
+        </div>
       </div>
 
       <h1 style={{ color: 'var(--primary-dark)', marginBottom: '3rem', textAlign: 'center', fontSize: '2.5rem' }}>Physiotherapy Post Chemotherapy</h1>
@@ -33,7 +37,16 @@ const PostChemoPhysio = () => {
             textAlign: 'center',
             maxWidth: '250px'
           }}>
-            <div style={{ fontSize: '5rem', marginBottom: '1rem' }}>{service.icon}</div>
+            <div style={{
+              marginBottom: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '80px',
+              color: 'var(--primary, #2c7a7b)',
+            }}>
+              {service.icon}
+            </div>
             <h3 style={{ fontSize: '1.2rem', color: '#333', marginBottom: '0.5rem', fontWeight: '500', minHeight: '40px' }}>{service.title}</h3>
             <Link to={service.link} style={{
               color: '#0000ee',

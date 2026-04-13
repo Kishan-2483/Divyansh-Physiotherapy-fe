@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  HeartPulse, Baby, Activity, PersonStanding,
+  Droplets, ShieldCheck
+} from 'lucide-react';
 
 const GynecologicalPhysio = () => {
   const gynaeServices = [
-    { title: "Physiotherapy During Pregnancy", icon: "🤰", link: "#" },
-    { title: "Physiotherapy After Childbirth", icon: "🤱", link: "#" },
-    { title: "Physiotherapy for Pelvic Floor", icon: "🧘‍♀️", link: "#" },
-    { title: "Physiotherapy for Perineal Pain", icon: "🧍‍♀️", link: "#" },
-    { title: "Physiotherapy for Incontinence", icon: "🚽", link: "#" },
-    { title: "Physiotherapy for Organ Prolapse", icon: "♀️", link: "#" }
+    { title: "Physiotherapy During Pregnancy", icon: <HeartPulse size={48} />, link: "#" },
+    { title: "Physiotherapy After Childbirth", icon: <Baby size={48} />, link: "#" },
+    { title: "Physiotherapy for Pelvic Floor", icon: <Activity size={48} />, link: "#" },
+    { title: "Physiotherapy for Perineal Pain", icon: <PersonStanding size={48} />, link: "#" },
+    { title: "Physiotherapy for Incontinence", icon: <Droplets size={48} />, link: "#" },
+    { title: "Physiotherapy for Organ Prolapse", icon: <ShieldCheck size={48} />, link: "#" }
   ];
 
   return (
@@ -29,7 +33,16 @@ const GynecologicalPhysio = () => {
             alignItems: 'center',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>{service.icon}</div>
+            <div style={{
+              marginBottom: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '80px',
+              color: 'var(--primary, #2c7a7b)',
+            }}>
+              {service.icon}
+            </div>
             <h3 style={{ fontSize: '1.1rem', color: '#333', marginBottom: '0.5rem', fontWeight: '500', minHeight: '40px' }}>{service.title}</h3>
             <Link to={service.link} style={{
               color: '#0000ee',
@@ -55,7 +68,7 @@ const GynecologicalPhysio = () => {
 
         <h2 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.8rem' }}>Physiotherapy During Pregnancy and After Delivery</h2>
         <p style={{ marginBottom: '2.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#4b5563' }}>
-          During pregnancy and After Delivery, a series of changes take place in the woman’s body to accommodate the new being that is being formed. Sometimes this can lead to minor imbalances, aches, pains, etc. generally in the areas of the back, pelvis and legs. There is much that a specialized physiotherapist can do to alleviate these discomforts in future moms.
+          During pregnancy and After Delivery, a series of changes take place in the woman's body to accommodate the new being that is being formed. Sometimes this can lead to minor imbalances, aches, pains, etc. generally in the areas of the back, pelvis and legs. There is much that a specialized physiotherapist can do to alleviate these discomforts in future moms.
         </p>
 
         <h2 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.8rem' }}>Conditions Treated under Gynecological Physiotherapy</h2>
@@ -77,7 +90,7 @@ const GynecologicalPhysio = () => {
 
         <h2 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.8rem' }}>Benefits of Gynecological Physiotherapy</h2>
         <p style={{ marginBottom: '2.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#4b5563' }}>
-          Women have specific health concerns, such as with pregnancy and post-partum care. Physical therapists can offer specialized management of issues related to women’s health. Additionally, Physiotherapy takes care of the overall health of a woman and prevents them from any future problems. Gynecological Physiotherapy helps in relieving pain as well as improve women's strength and overall health, it also provides proper rehab after various surgical procedures. Gynecological Physiotherapists also provide proper training sessions prior to childbirth as well as after delivery in order to reduce complications, maintain proper health, and help in managing the changes that the body has gone through during the pregnancy period
+          Women have specific health concerns, such as with pregnancy and post-partum care. Physical therapists can offer specialized management of issues related to women's health. Additionally, Physiotherapy takes care of the overall health of a woman and prevents them from any future problems. Gynecological Physiotherapy helps in relieving pain as well as improve women's strength and overall health, it also provides proper rehab after various surgical procedures. Gynecological Physiotherapists also provide proper training sessions prior to childbirth as well as after delivery in order to reduce complications, maintain proper health, and help in managing the changes that the body has gone through during the pregnancy period
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem', borderTop: '1px solid #eee', paddingTop: '3rem' }}>

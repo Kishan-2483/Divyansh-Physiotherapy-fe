@@ -1,19 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Bone, Dumbbell, PersonStanding, Accessibility,
+  Brain, Dna, Footprints, Bandage, UserRound,
+  HandHelping, Scale
+} from 'lucide-react';
 
 const GeriatricPhysio = () => {
   const geriatricServices = [
-    { title: "Joint Pain Physiotherapy", icon: "🦴", link: "/#contact", linkText: "Book Now" },
-    { title: "General Weakness Physiotherapy", icon: "💪", link: "/#contact", linkText: "Book Now" },
-    { title: "Postural Issues Physiotherapy", icon: "🧍", link: "/#contact", linkText: "Book Now" },
-    { title: "Balance Disorders Physiotherapy", icon: "🦯", link: "/#contact", linkText: "Book Now" },
-    { title: "Parkinson's Physiotherapy", icon: "🚶‍♂️", link: "/services/parkinsons-physiotherapy", linkText: "Know More" },
-    { title: "Geriatric Neuro Physiotherapy", icon: "👵", link: "/services/geriatric-neuro-physiotherapy", linkText: "Know More" },
-    { title: "Bell's Palsy Physiotherapy", icon: "🤕", link: "/services/bells-palsy-physiotherapy", linkText: "Know More" },
-    { title: "Stroke Paralysis Physiotherapy", icon: "🧠", link: "/services/stroke-paralysis-physiotherapy", linkText: "Know More" },
-    { title: "Physiotherapy for GBS Syndrome", icon: "🧬", link: "/services/gbs-syndrome-physiotherapy", linkText: "Know More" },
-    { title: "Physiotherapy for Paralysis", icon: "🦼", link: "/services/paralysis-physiotherapy", linkText: "Know More" },
-    { title: "Physiotherapy For Walking Difficulty", icon: "🩼", link: "/#contact", linkText: "Book Now" },
+    { title: "Joint Pain Physiotherapy", icon: <Bone size={48} />, link: "/#contact", linkText: "Book Now" },
+    { title: "General Weakness Physiotherapy", icon: <Dumbbell size={48} />, link: "/#contact", linkText: "Book Now" },
+    { title: "Postural Issues Physiotherapy", icon: <PersonStanding size={48} />, link: "/#contact", linkText: "Book Now" },
+    { title: "Balance Disorders Physiotherapy", icon: <Scale size={48} />, link: "/#contact", linkText: "Book Now" },
+    { title: "Parkinson's Physiotherapy", icon: <Footprints size={48} />, link: "/services/parkinsons-physiotherapy", linkText: "Know More" },
+    { title: "Geriatric Neuro Physiotherapy", icon: <UserRound size={48} />, link: "/services/geriatric-neuro-physiotherapy", linkText: "Know More" },
+    { title: "Bell's Palsy Physiotherapy", icon: <Bandage size={48} />, link: "/services/bells-palsy-physiotherapy", linkText: "Know More" },
+    { title: "Stroke Paralysis Physiotherapy", icon: <Brain size={48} />, link: "/services/stroke-paralysis-physiotherapy", linkText: "Know More" },
+    { title: "Physiotherapy for GBS Syndrome", icon: <Dna size={48} />, link: "/services/gbs-syndrome-physiotherapy", linkText: "Know More" },
+    { title: "Physiotherapy for Paralysis", icon: <Accessibility size={48} />, link: "/services/paralysis-physiotherapy", linkText: "Know More" },
+    { title: "Physiotherapy For Walking Difficulty", icon: <HandHelping size={48} />, link: "/#contact", linkText: "Book Now" },
   ];
 
   return (
@@ -45,12 +50,12 @@ const GeriatricPhysio = () => {
             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
             <div style={{
-              fontSize: '4rem',
               marginBottom: '1.5rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               height: '80px',
+              color: 'var(--primary, #2c7a7b)',
             }}>
               {service.icon}
             </div>

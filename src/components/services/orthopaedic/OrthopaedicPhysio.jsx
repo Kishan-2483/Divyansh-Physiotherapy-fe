@@ -1,21 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Bone, Dumbbell, Hospital, Snowflake, Scan,
+  PersonStanding, Stethoscope, CircleDot, Bandage,
+  Zap, ArrowDownToLine
+} from 'lucide-react';
 
 const OrthopaedicPhysio = () => {
   const orthoServices = [
-    { title: "Post Fracture Physiotherapy", icon: "🦴", link: "/services/post-fracture-physiotherapy" },
-    { title: "Sports Injury Physiotherapy", icon: "🏃‍♂️", link: "/services/sports-injury-physiotherapy" },
-    { title: "Post Surgery Physiotherapy", icon: "🏥", link: "/services/post-surgery-physiotherapy" },
-    { title: "Frozen Shoulder Physiotherapy", icon: "🧊", link: "/services/frozen-shoulder-physiotherapy" },
-    { title: "Physiotherapy For Spinal Injury", icon: "🩻", link: "/services/spinal-injury-physiotherapy" },
-    { title: "Posture Correction Physiotherapy", icon: "🧍", link: "/services/posture-correction-physiotherapy" },
-    { title: "Cervical Spondylosis Physiotherapy", icon: "🧑‍⚕️", link: "/services/cervical-spondylosis-physiotherapy" },
-    { title: "Ankylosing Spondylitis", icon: "🦴", link: "/services/ankylosing-spondylitis" },
-    { title: "Arthritis Physiotherapy", icon: "🦵", link: "/services/arthritis-physiotherapy" },
-    { title: "Shoulder Dislocation Physiotherapy", icon: "🤕", link: "/services/shoulder-dislocation-physiotherapy" },
-    { title: "Physiotherapy For Ligament Injury", icon: "💥", link: "/services/ligament-injury-physiotherapy" },
-    { title: "Back Pain Physiotherapy", icon: "⚡", link: "/services/back-pain-physiotherapy" },
-    { title: "Knee Pain Physiotherapy", icon: "🦵", link: "/services/knee-pain-physiotherapy" }
+    { title: "Post Fracture Physiotherapy", icon: <Bone size={48} />, link: "/services/post-fracture-physiotherapy" },
+    { title: "Sports Injury Physiotherapy", icon: <Dumbbell size={48} />, link: "/services/sports-injury-physiotherapy" },
+    { title: "Post Surgery Physiotherapy", icon: <Hospital size={48} />, link: "/services/post-surgery-physiotherapy" },
+    { title: "Frozen Shoulder Physiotherapy", icon: <Snowflake size={48} />, link: "/services/frozen-shoulder-physiotherapy" },
+    { title: "Physiotherapy For Spinal Injury", icon: <Scan size={48} />, link: "/services/spinal-injury-physiotherapy" },
+    { title: "Posture Correction Physiotherapy", icon: <PersonStanding size={48} />, link: "/services/posture-correction-physiotherapy" },
+    { title: "Cervical Spondylosis Physiotherapy", icon: <Stethoscope size={48} />, link: "/services/cervical-spondylosis-physiotherapy" },
+    { title: "Ankylosing Spondylitis", icon: <Bone size={48} />, link: "/services/ankylosing-spondylitis" },
+    { title: "Arthritis Physiotherapy", icon: <CircleDot size={48} />, link: "/services/arthritis-physiotherapy" },
+    { title: "Shoulder Dislocation Physiotherapy", icon: <Bandage size={48} />, link: "/services/shoulder-dislocation-physiotherapy" },
+    { title: "Physiotherapy For Ligament Injury", icon: <Zap size={48} />, link: "/services/ligament-injury-physiotherapy" },
+    { title: "Back Pain Physiotherapy", icon: <ArrowDownToLine size={48} />, link: "/services/back-pain-physiotherapy" },
+    { title: "Knee Pain Physiotherapy", icon: <CircleDot size={48} />, link: "/services/knee-pain-physiotherapy" }
   ];
 
   return (
@@ -42,12 +47,12 @@ const OrthopaedicPhysio = () => {
             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
             <div style={{
-              fontSize: '4rem',
               marginBottom: '1.5rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               height: '80px',
+              color: 'var(--primary, #2c7a7b)',
             }}>
               {service.icon}
             </div>

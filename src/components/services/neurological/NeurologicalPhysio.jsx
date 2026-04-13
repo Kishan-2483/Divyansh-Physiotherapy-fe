@@ -1,20 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Brain, Footprints, Bandage, UserRound, Baby,
+  UserRound as GeriatricIcon, Dna, Accessibility,
+  Zap, ArrowDownToLine, Hand, PersonStanding
+} from 'lucide-react';
 
 const NeurologicalPhysio = () => {
   const neuroServices = [
-    { title: "Stroke Paralysis Physiotherapy", icon: "🧠", link: "/services/stroke-paralysis-physiotherapy" },
-    { title: "Parkinson's Physiotherapy", icon: "🚶‍♂️", link: "/services/parkinsons-physiotherapy" },
-    { title: "Bell's Palsy Physiotherapy", icon: "🤕", link: "/services/bells-palsy-physiotherapy" },
-    { title: "Age Related, Balance Issues", icon: "👴", link: "/services/geriatric-physiotherapy" },
-    { title: "Pediatric Neuro Physiotherapy", icon: "👶", link: "/services/pediatric-neuro-physiotherapy" },
-    { title: "Geriatric Neuro Physiotherapy", icon: "👵", link: "/services/geriatric-neuro-physiotherapy" },
-    { title: "Physiotherapy for GBS Syndrome", icon: "🧬", link: "/services/gbs-syndrome-physiotherapy" },
-    { title: "Physiotherapy for Multiple Sclerosis", icon: "🦽", link: "/services/multiple-sclerosis-physiotherapy" },
-    { title: "Physiotherapy for Nerve Injury", icon: "⚡", link: "/services/nerve-injury-physiotherapy" },
-    { title: "Physiotherapy for Paralysis", icon: "🦼", link: "/services/paralysis-physiotherapy" },
-    { title: "Physiotherapy for Foot Drop", icon: "🦶", link: "/services/foot-drop-physiotherapy" },
-    { title: "Physiotherapy for Wrist Drop", icon: "✋", link: "/services/wrist-drop-physiotherapy" },
+    { title: "Stroke Paralysis Physiotherapy", icon: <Brain size={48} />, link: "/services/stroke-paralysis-physiotherapy" },
+    { title: "Parkinson's Physiotherapy", icon: <PersonStanding size={48} />, link: "/services/parkinsons-physiotherapy" },
+    { title: "Bell's Palsy Physiotherapy", icon: <Bandage size={48} />, link: "/services/bells-palsy-physiotherapy" },
+    { title: "Age Related, Balance Issues", icon: <UserRound size={48} />, link: "/services/geriatric-physiotherapy" },
+    { title: "Pediatric Neuro Physiotherapy", icon: <Baby size={48} />, link: "/services/pediatric-neuro-physiotherapy" },
+    { title: "Geriatric Neuro Physiotherapy", icon: <GeriatricIcon size={48} />, link: "/services/geriatric-neuro-physiotherapy" },
+    { title: "Physiotherapy for GBS Syndrome", icon: <Dna size={48} />, link: "/services/gbs-syndrome-physiotherapy" },
+    { title: "Physiotherapy for Multiple Sclerosis", icon: <Accessibility size={48} />, link: "/services/multiple-sclerosis-physiotherapy" },
+    { title: "Physiotherapy for Nerve Injury", icon: <Zap size={48} />, link: "/services/nerve-injury-physiotherapy" },
+    { title: "Physiotherapy for Paralysis", icon: <Accessibility size={48} />, link: "/services/paralysis-physiotherapy" },
+    { title: "Physiotherapy for Foot Drop", icon: <Footprints size={48} />, link: "/services/foot-drop-physiotherapy" },
+    { title: "Physiotherapy for Wrist Drop", icon: <Hand size={48} />, link: "/services/wrist-drop-physiotherapy" },
   ];
 
   return (
@@ -45,12 +50,12 @@ const NeurologicalPhysio = () => {
             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
             <div style={{
-              fontSize: '4rem',
               marginBottom: '1.5rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               height: '80px',
+              color: 'var(--primary, #2c7a7b)',
             }}>
               {service.icon}
             </div>
@@ -83,7 +88,7 @@ const NeurologicalPhysio = () => {
       <div style={{ backgroundColor: 'white', padding: '3rem', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
         <h2 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.8rem' }}>What is Neurological Physiotherapy?</h2>
         <p style={{ marginBottom: '2.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#4b5563' }}>
-          Neurological physiotherapy involves the treatment of people with movement and function disorders that have originated from problems within the body’s nervous and neuromuscular system. These conditions often manifest themselves as muscle weakness, poor balance and coordination, uncontrolled muscle spasm and tremors, loss of function and decreased sensation.
+          Neurological physiotherapy involves the treatment of people with movement and function disorders that have originated from problems within the body's nervous and neuromuscular system. These conditions often manifest themselves as muscle weakness, poor balance and coordination, uncontrolled muscle spasm and tremors, loss of function and decreased sensation.
         </p>
 
         <h2 style={{ color: 'var(--primary)', marginBottom: '1rem', fontSize: '1.8rem' }}>How Does Neurological Physiotherapy Work?</h2>
@@ -95,13 +100,13 @@ const NeurologicalPhysio = () => {
         <p style={{ marginBottom: '1rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#4b5563' }}>Any neurological condition that affects movement and physical ability can be treated using neurophysiotherapy. Some common conditions in which this is useful include:</p>
         <ul style={{ listStyleType: 'disc', paddingLeft: '2rem', marginBottom: '2.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: '#4b5563' }}>
           <li>Stroke Paralysis</li>
-          <li>Parkinson’s Disease</li>
-          <li>Bell’s Palsy</li>
+          <li>Parkinson's Disease</li>
+          <li>Bell's Palsy</li>
           <li>Cerebral Palsy</li>
           <li>Multiple Sclerosis</li>
           <li>Traumatic Brain Injury</li>
           <li>Spinal Cord Injury</li>
-          <li>Alzheimer’s Disease</li>
+          <li>Alzheimer's Disease</li>
           <li>Guillain–Barre Syndrome (GBS)</li>
           <li>etc.</li>
         </ul>

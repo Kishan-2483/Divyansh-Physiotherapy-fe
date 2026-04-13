@@ -1,20 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  Brain, Bone, UserRound, Baby, HeartPulse,
+  Hospital, Bandage, Dumbbell, Heart, Pill, Wind
+} from 'lucide-react';
 import '../../index.css';
 
 const Services = () => {
   const servicesList = [
-    { title: "Neurological Physiotherapy", icon: "🧠", link: "/services/neurological-physiotherapy" },
-    { title: "Orthopaedic Physiotherapy", icon: "🦴", link: "/services/orthopaedic-physiotherapy" },
-    { title: "Geriatric Physiotherapy", icon: "👵", link: "/services/geriatric-physiotherapy" },
-    { title: "Pediatric Physiotherapy", icon: "👶", link: "/services/pediatric-neuro-physiotherapy" },
-    { title: "Gynecological Physiotherapy", icon: "🤰", link: "/services/gynecological-physiotherapy" },
-    { title: "Post Surgery Physiotherapy", icon: "🏥", link: "/services/post-surgery-physiotherapy" },
-    { title: "Post Fracture Physiotherapy", icon: "🤕", link: "/services/post-fracture-physiotherapy" },
-    { title: "Sports Injury Physiotherapy", icon: "🏃", link: "/services/sports-injury-physiotherapy" },
-    { title: "Cardiac Rehab Physiotherapy", icon: "❤️", link: "/services/cardiac-rehab-physiotherapy" },
-    { title: "Physiotherapy Post Chemotherapy", icon: "💊", link: "/services/physiotherapy-post-chemotherapy" },
-    { title: "Respiratory Physiotherapy", icon: "🫁", link: "/services/respiratory-physiotherapy" }
+    { title: "Neurological Physiotherapy", icon: <Brain size={48} />, link: "/services/neurological-physiotherapy" },
+    { title: "Orthopaedic Physiotherapy", icon: <Bone size={48} />, link: "/services/orthopaedic-physiotherapy" },
+    { title: "Geriatric Physiotherapy", icon: <UserRound size={48} />, link: "/services/geriatric-physiotherapy" },
+    { title: "Pediatric Physiotherapy", icon: <Baby size={48} />, link: "/services/pediatric-neuro-physiotherapy" },
+    { title: "Gynecological Physiotherapy", icon: <HeartPulse size={48} />, link: "/services/gynecological-physiotherapy" },
+    { title: "Post Surgery Physiotherapy", icon: <Hospital size={48} />, link: "/services/post-surgery-physiotherapy" },
+    { title: "Post Fracture Physiotherapy", icon: <Bandage size={48} />, link: "/services/post-fracture-physiotherapy" },
+    { title: "Sports Injury Physiotherapy", icon: <Dumbbell size={48} />, link: "/services/sports-injury-physiotherapy" },
+    { title: "Cardiac Rehab Physiotherapy", icon: <Heart size={48} />, link: "/services/cardiac-rehab-physiotherapy" },
+    { title: "Physiotherapy Post Chemotherapy", icon: <Pill size={48} />, link: "/services/physiotherapy-post-chemotherapy" },
+    { title: "Respiratory Physiotherapy", icon: <Wind size={48} />, link: "/services/respiratory-physiotherapy" }
   ];
 
   return (
@@ -40,15 +44,14 @@ const Services = () => {
             onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
           >
-            {/* You can replace the text emojis with actual SVGs or images later */}
             <div style={{
-              fontSize: '4rem',
               marginBottom: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               height: '100px',
               width: '100px',
+              color: 'var(--primary, #2c7a7b)',
             }}>
               {service.icon}
             </div>
