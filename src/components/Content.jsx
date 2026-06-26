@@ -78,55 +78,30 @@ const Content = () => {
   return (
     <section id="content" className="section container">
       <div className="text-center animate-fade-in">
-        <h2 style={{ fontSize: '2.5rem', color: 'var(--primary-dark)', marginBottom: '1rem', textTransform: 'uppercase' }}>CONTENTS</h2>
+        <h2 className="faq-title">CONTENTS</h2>
         <p style={{ marginBottom: '3rem' }}>Frequently Asked Questions about our services</p>
       </div>
 
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div className="faq-container">
         {faqs.map((faq, index) => (
-          <div key={index} style={{ 
-            marginBottom: '1rem', 
-            border: '1px solid var(--glass-border)', 
-            borderRadius: '10px',
-            overflow: 'hidden',
-            backgroundColor: 'white',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
-          }}>
-            <button 
+          <div
+            key={index}
+            className={`faq-item${activeIndex === index ? ' active' : ''}`}
+          >
+            <button
               onClick={() => toggleAccordion(index)}
-              style={{
-                width: '100%',
-                padding: '1.5rem',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                backgroundColor: activeIndex === index ? 'var(--bg-color)' : 'white',
-                border: 'none',
-                cursor: 'pointer',
-                textAlign: 'left',
-                fontSize: '1.1rem',
-                fontWeight: '600',
-                color: 'var(--primary-dark)',
-                transition: 'background-color 0.3s'
-              }}
+              className="faq-trigger"
+              aria-expanded={activeIndex === index}
             >
               {faq.question}
-              <span style={{ fontSize: '1.5rem', color: 'var(--primary)' }}>
-                {activeIndex === index ? '−' : '+'}
-              </span>
+              <span className="faq-trigger-icon">+</span>
             </button>
             
-            {activeIndex === index && (
-              <div style={{ 
-                padding: '1.5rem', 
-                backgroundColor: 'white',
-                borderTop: '1px solid var(--glass-border)',
-                color: '#444',
-                lineHeight: '1.8'
-              }}>
+            <div className="faq-answer-wrapper">
+              <div className="faq-answer-content">
                 {faq.answer}
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

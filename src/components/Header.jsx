@@ -57,23 +57,14 @@ const Header = () => {
         }
       `}</style>
 
-      <header
-        className="header"
-        style={{
-          boxShadow: scrolled
-            ? '0 10px 30px rgba(0,0,0,0.12)'
-            : '0 10px 30px rgba(0,0,0,0.08)',
-          position: 'fixed',
-        }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', position: 'relative' }}>
+      <header className={`header${scrolled ? ' scrolled' : ''}`}>
+        <div className="container" style={{ position: 'relative' }}>
           <a
             href="/#home"
             className="logo"
-            style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}
             onClick={closeMenu}
           >
-            <img src="/logo.png" alt="Clinic Logo" style={{ height: '40px', marginRight: '10px' }} />
+            <img src="/logo.png" alt="Clinic Logo" />
             Divyansh Physiotherapy Clinic
           </a>
 

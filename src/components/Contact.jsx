@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MapPin, Phone, Mail, User, Stethoscope, FileText, Calendar } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,76 +42,113 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section container">
-      <div className="text-center" style={{ marginBottom: '3rem' }}>
-        <h2 style={{ fontSize: '2.5rem', color: 'var(--primary-dark)' }}>Contact Us</h2>
-        <p>Get in touch for appointments and inquiries</p>
+      <div className="text-center" style={{ marginBottom: '4rem' }}>
+        <h2 style={{ fontSize: '2.5rem', color: 'var(--primary-dark)', fontWeight: '800' }}>Contact Us</h2>
+        <p style={{ color: 'var(--text-muted)' }}>Get in touch for appointments and inquiries</p>
       </div>
 
       <div className="contact-container">
         <div className="contact-info">
           <h3>Divyansh Physiotherapy Clinic</h3>
-          <p style={{ fontWeight: 600, color: 'var(--text-dark)' }}>A Unit of Ayush Family Hospital</p>
+          <p className="hospital-sub">A Unit of Ayush Family Hospital</p>
           
           <div className="contact-detail">
-            <strong>📍 Address:</strong><br/>
-            Sec. M-1/422, Ashiyana Colony,<br/>
-            Near Vishwanath Academy, Lucknow-226012
+            <MapPin className="contact-icon-svg" size={20} />
+            <div className="contact-detail-text">
+              <strong>Address:</strong><br/>
+              Sec. M-1/422, Ashiyana Colony,<br/>
+              Near Vishwanath Academy, Lucknow-226012
+            </div>
           </div>
           <div className="contact-detail">
-            <strong>📞 Phone:</strong><br/>
-            +91-8318428997<br/>
-            +91-8737996914
+            <Phone className="contact-icon-svg" size={20} />
+            <div className="contact-detail-text">
+              <strong>Phone:</strong><br/>
+              +91-8318428997<br/>
+              +91-8737996914
+            </div>
           </div>
           <div className="contact-detail">
-            <strong>✉️ Email:</strong><br/>
-            divyanshphysio@gmail.com
+            <Mail className="contact-icon-svg" size={20} />
+            <div className="contact-detail-text">
+              <strong>Email:</strong><br/>
+              divyanshphysio@gmail.com
+            </div>
           </div>
         </div>
 
         <div className="contact-form-wrapper">
-          <h3 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Book an Appointment</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input 
-                type="text" 
-                name="name" 
-                placeholder="Full Name" 
-                required 
-                value={formData.name}
-                onChange={handleInputChange}
-              />
+          <h3 className="booking-form-title">
+            <Calendar size={24} /> Book an Appointment
+          </h3>
+          <form onSubmit={handleSubmit} className="booking-form">
+            <div className="form-row-2">
+              <div className="form-group">
+                <label htmlFor="name">Full Name</label>
+                <div className="input-with-icon">
+                  <User className="input-icon-svg" size={18} />
+                  <input 
+                    type="text" 
+                    id="name"
+                    name="name" 
+                    placeholder="Full Name" 
+                    required 
+                    value={formData.name}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="phone">Phone Number</label>
+                <div className="input-with-icon">
+                  <Phone className="input-icon-svg" size={18} />
+                  <input 
+                    type="tel" 
+                    id="phone"
+                    name="phone" 
+                    placeholder="Phone Number" 
+                    required 
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
             </div>
+
             <div className="form-group">
-              <input 
-                type="tel" 
-                name="phone" 
-                placeholder="Phone Number" 
-                required 
-                value={formData.phone}
-                onChange={handleInputChange}
-              />
+              <label htmlFor="service">Select a Service</label>
+              <div className="input-with-icon">
+                <Stethoscope className="input-icon-svg" size={18} />
+                <select 
+                  id="service"
+                  name="service" 
+                  value={formData.service}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="" disabled>Select a Service</option>
+                  {servicesList.map((s, i) => <option key={i} value={s}>{s}</option>)}
+                </select>
+              </div>
             </div>
+
             <div className="form-group">
-              <select 
-                name="service" 
-                value={formData.service}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="" disabled>Select a Service</option>
-                {servicesList.map((s, i) => <option key={i} value={s}>{s}</option>)}
-              </select>
+              <label htmlFor="message">Your Message/Symptoms</label>
+              <div className="input-with-icon">
+                <FileText className="input-icon-svg" size={18} style={{ alignSelf: 'flex-start', marginTop: '1.25rem' }} />
+                <textarea 
+                  id="message"
+                  name="message" 
+                  placeholder="Your Message/Symptoms" 
+                  rows="4"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                ></textarea>
+              </div>
             </div>
-            <div className="form-group">
-              <textarea 
-                name="message" 
-                placeholder="Your Message/Symptoms" 
-                rows="4"
-                value={formData.message}
-                onChange={handleInputChange}
-              ></textarea>
-            </div>
-            <button type="submit" className="btn" style={{ width: '100%' }}>Send Message</button>
+            
+            <button type="submit" className="btn">Send Message</button>
             {submitStatus && <p style={{ marginTop: '1rem', color: submitStatus.includes('success') ? 'green' : 'red', textAlign: 'center', fontWeight: 'bold' }}>{submitStatus}</p>}
           </form>
         </div>

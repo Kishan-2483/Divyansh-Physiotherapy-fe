@@ -16,16 +16,13 @@ const DoctorProfile = () => (
         <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
           Dedicated to providing personalized care and effective treatment plans. Specializing in orthopedic and neuro rehabilitation, helping patients achieve optimal physical function and quality of life.
         </p>
-        <div
-          className="stats"
-          style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}
-        >
-          <div>
-            <h4 style={{ fontSize: '1.5rem', color: 'var(--accent)' }}>4+</h4>
+        <div className="doctor-stats">
+          <div className="stat-card">
+            <h4>4+</h4>
             <p>Years Experience</p>
           </div>
-          <div>
-            <h4 style={{ fontSize: '1.5rem', color: 'var(--accent)' }}>500+</h4>
+          <div className="stat-card">
+            <h4>500+</h4>
             <p>Happy Patients</p>
           </div>
         </div>
