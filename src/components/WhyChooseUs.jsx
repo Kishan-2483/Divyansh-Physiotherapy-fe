@@ -30,12 +30,12 @@ const WhyChooseUs = () => {
       <style>{`
         .why-choose-section {
           background-color: var(--bg-alt);
-          padding: 6rem 0;
+          padding: 4.5rem 0;
         }
         
         .why-choose-title-wrapper {
           text-align: center;
-          margin-bottom: 4rem;
+          margin-bottom: 3rem;
         }
         
         .why-choose-title {

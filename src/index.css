@@ -88,9 +88,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section {
-  padding: 6rem 0;
+  padding: 4.5rem 0;
   position: relative;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: none; /* Clean continuous flow instead of harsh line dividers */
 }
 
 .text-center {
@@ -387,7 +387,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-main);
   border-radius: var(--border-radius-lg);
   border: 1px solid rgba(15, 118, 110, 0.08);
-  margin: 5rem 0;
+  margin: 1rem 0; /* Reduced margin since section padding already handles spacing */
   padding: 4.5rem;
   display: flex;
   gap: 4.5rem;
@@ -932,7 +932,7 @@ footer p {
   }
 
   .section {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .header {

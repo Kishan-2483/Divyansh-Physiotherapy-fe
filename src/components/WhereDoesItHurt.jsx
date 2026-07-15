@@ -88,13 +88,13 @@ const WhereDoesItHurt = () => {
       <style>{`
         .hurt-map-section {
           background-color: var(--bg-main);
-          padding: 6rem 0;
-          border-bottom: 1px solid var(--border-light);
+          padding: 4.5rem 0;
+          border-bottom: none;
         }
 
         .hurt-title-wrapper {
           text-align: center;
-          margin-bottom: 4rem;
+          margin-bottom: 3rem;
         }
 
         .hurt-title {
