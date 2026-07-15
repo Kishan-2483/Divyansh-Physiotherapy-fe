@@ -1,26 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import '../index.css';
 
-import Header from '../components/Header';
 import Hero from '../components/Hero';
+import WhyChooseUs from '../components/WhyChooseUs';
 import Services from '../components/services/Services';
+import WhereDoesItHurt from '../components/WhereDoesItHurt';
 import Content from '../components/Content';
 import DoctorProfile from '../components/DoctorProfile';
 import Pricing from '../components/Pricing';
 import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import FloatingButtons from '../components/FloatingButtons';
+import Chatbot from '../components/Chatbot';
 
 const Home = () => {
   return (
     <>
       <Hero />
+      <WhyChooseUs />
       <Services />
+      <WhereDoesItHurt />
       <Content />
       <DoctorProfile />
       <Pricing />
       <Contact />
+      <Chatbot />
     </>
   );
 };
