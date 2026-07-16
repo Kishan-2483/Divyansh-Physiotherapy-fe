@@ -86,15 +86,50 @@ const WhereDoesItHurt = () => {
   return (
     <section id="hurt-map" className="hurt-map-section">
       <style>{`
+        /* ============================================
+           CLAYMORPHISM DESIGN — WhereDoesItHurt
+           Soft 3D clay-sculpted cards with inner glow,
+           dual shadows, and inflated tactile feel.
+           ============================================ */
+
         .hurt-map-section {
-          background-color: var(--bg-main);
-          padding: 4.5rem 0;
+          background: linear-gradient(160deg, #F0FDFA 0%, #F8FCFB 40%, #E6FAF7 100%);
+          padding: 5rem 0;
           border-bottom: none;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Subtle background clay blobs */
+        .hurt-map-section::before {
+          content: '';
+          position: absolute;
+          width: 420px;
+          height: 420px;
+          background: radial-gradient(circle, rgba(20, 184, 166, 0.06) 0%, transparent 70%);
+          top: -80px;
+          left: -100px;
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .hurt-map-section::after {
+          content: '';
+          position: absolute;
+          width: 350px;
+          height: 350px;
+          background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+          bottom: -60px;
+          right: -60px;
+          border-radius: 50%;
+          pointer-events: none;
         }
 
         .hurt-title-wrapper {
           text-align: center;
-          margin-bottom: 3rem;
+          margin-bottom: 3.5rem;
+          position: relative;
+          z-index: 1;
         }
 
         .hurt-title {
@@ -110,34 +145,52 @@ const WhereDoesItHurt = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           align-items: center;
-          gap: 4rem;
+          gap: 3.5rem;
           max-width: 1100px;
           margin: 0 auto;
           padding: 0 1.5rem;
+          position: relative;
+          z-index: 1;
         }
 
-        /* SVG Silhouetted Interactive Map */
+        /* ── CLAY CARD: Silhouette Map ── */
         .silhouette-wrapper {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: rgba(255, 255, 255, 0.6);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(15, 118, 110, 0.05);
-          border-radius: var(--border-radius-lg);
+          background: #EDF9F7;
+          border-radius: 32px;
           padding: 3rem;
-          box-shadow: var(--shadow-sm);
-          height: 520px;
+          height: 540px;
           position: relative;
+          border: none;
+
+          /* Claymorphism signature: outer shadow + inner glow */
+          box-shadow:
+            12px 12px 24px rgba(15, 118, 110, 0.10),
+            -8px -8px 20px rgba(255, 255, 255, 0.85),
+            inset 3px 3px 8px rgba(255, 255, 255, 0.9),
+            inset -2px -2px 6px rgba(15, 118, 110, 0.06);
+          transition: box-shadow 0.4s ease, transform 0.4s ease;
+        }
+
+        .silhouette-wrapper:hover {
+          box-shadow:
+            14px 14px 28px rgba(15, 118, 110, 0.12),
+            -10px -10px 24px rgba(255, 255, 255, 0.9),
+            inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+            inset -3px -3px 8px rgba(15, 118, 110, 0.07);
+          transform: translateY(-2px);
         }
 
         .silhouette-svg {
           height: 100%;
-          color: rgba(15, 118, 110, 0.15); /* Light teal anatomical lines */
+          color: rgba(15, 118, 110, 0.18);
           transition: color 0.3s ease;
+          filter: drop-shadow(0 1px 2px rgba(15, 118, 110, 0.08));
         }
 
-        /* glowing pulsing dot */
+        /* ── Hotspot Dots — Clay-pressed interaction ── */
         .hotspot-group {
           cursor: pointer;
         }
@@ -153,19 +206,21 @@ const WhereDoesItHurt = () => {
         .hotspot-group:hover .hotspot-pulse,
         .hotspot-group.active .hotspot-pulse {
           stroke: var(--secondary);
-          stroke-width: 2px;
+          stroke-width: 2.5px;
           animation: hotspotPulseAnim 1.5s infinite ease-out;
         }
 
         .hotspot-core {
           fill: var(--primary);
           transition: fill 0.3s ease, r 0.3s ease;
+          filter: drop-shadow(0 2px 4px rgba(15, 118, 110, 0.3));
         }
 
         .hotspot-group:hover .hotspot-core,
         .hotspot-group.active .hotspot-core {
           fill: var(--secondary);
-          r: 6.5px;
+          r: 7px;
+          filter: drop-shadow(0 3px 8px rgba(20, 184, 166, 0.4));
         }
 
         .hotspot-label-tag {
@@ -173,7 +228,7 @@ const WhereDoesItHurt = () => {
           font-size: 10px;
           font-weight: 700;
           fill: var(--text-main);
-          opacity: 0.6;
+          opacity: 0.55;
           transition: opacity 0.3s, fill 0.3s;
         }
 
@@ -185,55 +240,81 @@ const WhereDoesItHurt = () => {
 
         @keyframes hotspotPulseAnim {
           0% {
-            r: 4px;
+            r: 5px;
             opacity: 1;
           }
           100% {
-            r: 22px;
+            r: 24px;
             opacity: 0;
           }
         }
 
-        /* Detail Panel Column */
+        /* ── CLAY CARD: Detail Panel ── */
         .detail-panel {
-          background-color: var(--bg-card);
-          border-radius: var(--border-radius-lg);
+          background: #FFFFFF;
+          border-radius: 32px;
           padding: 3.5rem;
-          border: 1px solid rgba(15, 118, 110, 0.06);
-          box-shadow: var(--shadow-lg);
-          min-height: 480px;
+          border: none;
+          min-height: 500px;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          transition: all 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+          /* Claymorphism: soft 3D sculpted look */
+          box-shadow:
+            10px 10px 20px rgba(15, 118, 110, 0.08),
+            -6px -6px 16px rgba(255, 255, 255, 0.9),
+            inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+            inset -2px -2px 5px rgba(15, 118, 110, 0.04);
+        }
+
+        .detail-panel:hover {
+          box-shadow:
+            12px 12px 24px rgba(15, 118, 110, 0.10),
+            -8px -8px 20px rgba(255, 255, 255, 0.95),
+            inset 4px 4px 8px rgba(255, 255, 255, 0.8),
+            inset -3px -3px 6px rgba(15, 118, 110, 0.05);
+          transform: translateY(-2px);
         }
 
         .detail-panel-fade {
-          animation: detailFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: detailFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes detailFadeIn {
           from {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(16px) scale(0.98);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
           }
         }
 
+        /* ── Clay Badge ── */
         .detail-badge {
           align-self: flex-start;
-          background-color: var(--primary-light);
+          background: #E6FAF7;
           color: var(--primary);
-          padding: 0.35rem 1rem;
+          padding: 0.45rem 1.2rem;
           border-radius: 50px;
           font-size: 0.78rem;
           font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 1.25rem;
+          letter-spacing: 0.6px;
+          margin-bottom: 1.5rem;
+          box-shadow:
+            inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+            inset -1px -1px 3px rgba(15, 118, 110, 0.08),
+            3px 3px 8px rgba(15, 118, 110, 0.06);
+          transition: all 0.3s ease;
+        }
+
+        .detail-badge:hover {
+          background: #D4F5F0;
+          transform: translateY(-1px);
         }
 
         .detail-panel h3 {
@@ -248,82 +329,131 @@ const WhereDoesItHurt = () => {
         .detail-panel p {
           font-size: 0.98rem;
           color: var(--text-muted);
-          line-height: 1.7;
+          line-height: 1.75;
           margin-bottom: 2rem;
         }
 
         .ailment-list-title {
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           font-weight: 700;
           color: var(--text-main);
           text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 0.75rem;
+          letter-spacing: 1.2px;
+          margin-bottom: 0.85rem;
         }
 
         .ailment-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 0.75rem;
+          gap: 0.6rem;
           margin-bottom: 2.5rem;
         }
 
+        /* ── Clay Ailment Chips ── */
         .ailment-item {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 0.88rem;
+          font-size: 0.85rem;
           font-weight: 600;
           color: var(--text-main);
+          padding: 0.5rem 0.75rem;
+          border-radius: 14px;
+          background: #F6FFFE;
+          box-shadow:
+            inset 1px 1px 3px rgba(255, 255, 255, 0.7),
+            inset -1px -1px 2px rgba(15, 118, 110, 0.04),
+            2px 2px 6px rgba(15, 118, 110, 0.04);
+          transition: all 0.25s ease;
+        }
+
+        .ailment-item:hover {
+          background: #EDF9F7;
+          transform: translateY(-1px);
+          box-shadow:
+            inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+            inset -1px -1px 3px rgba(15, 118, 110, 0.05),
+            3px 3px 8px rgba(15, 118, 110, 0.06);
         }
 
         .ailment-item-dot {
-          width: 6px;
-          height: 6px;
-          background-color: var(--secondary);
+          width: 7px;
+          height: 7px;
+          background: linear-gradient(135deg, var(--secondary), var(--primary));
           border-radius: 50%;
+          box-shadow: 0 1px 3px rgba(20, 184, 166, 0.3);
+          flex-shrink: 0;
         }
 
+        /* ── Clay CTA Button ── */
         .detail-cta-link {
           align-self: flex-start;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background-color: var(--primary);
+          gap: 10px;
+          background: linear-gradient(135deg, var(--primary) 0%, #0D9488 100%);
           color: white !important;
-          padding: 0.85rem 1.75rem;
+          padding: 0.95rem 2rem;
           border-radius: 50px;
           font-weight: 700;
           font-size: 0.9rem;
           text-decoration: none;
-          box-shadow: 0 6px 14px rgba(15, 118, 110, 0.15);
-          transition: all 0.3s ease;
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+          /* Clay-style raised button */
+          box-shadow:
+            6px 6px 14px rgba(15, 118, 110, 0.18),
+            -3px -3px 8px rgba(255, 255, 255, 0.2),
+            inset 2px 2px 4px rgba(255, 255, 255, 0.15),
+            inset -1px -1px 3px rgba(0, 0, 0, 0.08);
         }
 
         .detail-cta-link:hover {
-          background-color: var(--primary-hover);
-          transform: translateX(3px);
-          box-shadow: 0 8px 20px rgba(15, 118, 110, 0.25);
+          background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+          transform: translateY(-2px) translateX(2px);
+          box-shadow:
+            8px 8px 18px rgba(15, 118, 110, 0.22),
+            -4px -4px 10px rgba(255, 255, 255, 0.25),
+            inset 3px 3px 6px rgba(255, 255, 255, 0.18),
+            inset -2px -2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .detail-cta-link:active {
+          transform: translateY(1px);
+          box-shadow:
+            3px 3px 8px rgba(15, 118, 110, 0.15),
+            inset 3px 3px 6px rgba(0, 0, 0, 0.12),
+            inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 900px) {
           .hurt-grid {
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
           }
           .silhouette-wrapper {
             height: 460px;
-            padding: 1.5rem;
+            padding: 2rem;
+            border-radius: 28px;
           }
           .detail-panel {
             min-height: auto;
-            padding: 2.5rem 1.75rem;
+            padding: 2.5rem 2rem;
+            border-radius: 28px;
           }
         }
 
         @media (max-width: 480px) {
+          .hurt-map-section {
+            padding: 3rem 0;
+          }
           .hurt-title {
             font-size: 2rem !important;
+          }
+          .silhouette-wrapper,
+          .detail-panel {
+            border-radius: 24px;
           }
           .ailment-grid {
             grid-template-columns: 1fr;

@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <>
       <style>{`
-        /* transparent to blurred-white header override */
+        /* Clay-raised header on scroll */
         .header {
           position: fixed;
           top: 0;
@@ -30,14 +30,17 @@ const Header = () => {
         
         .header.scrolled {
           padding: 0.85rem 0;
-          background: rgba(255, 255, 255, 0.75);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(15, 118, 110, 0.08);
-          box-shadow: 0 4px 30px rgba(15, 118, 110, 0.03);
+          background: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: none;
+          box-shadow:
+            0 6px 18px rgba(15, 118, 110, 0.06),
+            inset 0 -1px 2px rgba(255, 255, 255, 0.8),
+            inset 0 1px 3px rgba(255, 255, 255, 0.5);
         }
 
-        /* Subtle hover animation for links */
+        /* Nav link hover underline */
         .nav-links a {
           position: relative;
           text-decoration: none;
@@ -56,22 +59,23 @@ const Header = () => {
           height: 2px;
           bottom: 0;
           left: 0;
-          background-color: var(--primary);
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+          border-radius: 2px;
           transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .nav-links a:hover {
           color: var(--primary);
-          background-color: transparent !important; /* Override global hover bg */
+          background-color: transparent !important;
         }
 
         .nav-links a:hover::after {
           width: 100%;
         }
 
-        /* Book Appointment CTA Button */
+        /* Clay CTA Button */
         .nav-cta {
-          background-color: var(--primary);
+          background: linear-gradient(135deg, var(--primary) 0%, #0D9488 100%);
           color: white !important;
           padding: 0.65rem 1.35rem;
           border-radius: 50px;
@@ -79,21 +83,33 @@ const Header = () => {
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: 0.85rem;
           text-decoration: none;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 12px rgba(15, 118, 110, 0.15);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          box-shadow:
+            4px 4px 10px rgba(15, 118, 110, 0.15),
+            -2px -2px 6px rgba(255, 255, 255, 0.2),
+            inset 1px 1px 3px rgba(255, 255, 255, 0.15),
+            inset -1px -1px 2px rgba(0, 0, 0, 0.08);
         }
 
         .nav-cta:hover {
-          background-color: var(--primary-hover);
+          background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
           transform: translateY(-1.5px);
-          box-shadow: 0 6px 16px rgba(15, 118, 110, 0.25);
+          box-shadow:
+            6px 6px 14px rgba(15, 118, 110, 0.2),
+            -3px -3px 8px rgba(255, 255, 255, 0.25),
+            inset 2px 2px 4px rgba(255, 255, 255, 0.18),
+            inset -1px -1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .nav-cta:active {
-          transform: translateY(0);
+          transform: translateY(0.5px);
+          box-shadow:
+            2px 2px 6px rgba(15, 118, 110, 0.1),
+            inset 2px 2px 4px rgba(0, 0, 0, 0.08),
+            inset -1px -1px 2px rgba(255, 255, 255, 0.1);
         }
 
         .mobile-cta-li {
@@ -109,7 +125,7 @@ const Header = () => {
           border: none;
           cursor: pointer;
           padding: 6px;
-          border-radius: 8px;
+          border-radius: 10px;
           transition: background 0.2s;
           flex-direction: column;
           gap: 5px;
@@ -117,7 +133,7 @@ const Header = () => {
           justify-content: center;
         }
         .hamburger:hover {
-          background: rgba(0, 128, 128, 0.08);
+          background: rgba(15, 118, 110, 0.06);
         }
         .hamburger span {
           display: block;
@@ -153,6 +169,7 @@ const Header = () => {
           .hamburger {
             display: flex;
           }
+          /* Clay-panel mobile dropdown */
           .nav-links {
             display: none;
             flex-direction: column;
@@ -161,12 +178,14 @@ const Header = () => {
             top: 100%;
             left: 0;
             right: 0;
-            background: #ffffff;
-            border-radius: 0 0 16px 16px;
+            background: #FFFFFF;
+            border-radius: 0 0 24px 24px;
             padding: 1rem 0 1.5rem;
-            box-shadow: var(--shadow-lg);
-            border-top: 1px solid var(--border-light);
+            border-top: none;
             animation: fadeIn 0.2s ease-out;
+            box-shadow:
+              0 12px 24px rgba(15, 118, 110, 0.08),
+              inset 0 2px 4px rgba(255, 255, 255, 0.8);
           }
           .nav-links.nav-open {
             display: flex;
@@ -181,13 +200,13 @@ const Header = () => {
             margin: 0;
             border-radius: 0;
             font-size: 0.95rem;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid rgba(15, 118, 110, 0.04);
           }
           .nav-links a::after {
             display: none;
           }
           .nav-links a:hover {
-            background-color: var(--bg-alt) !important;
+            background-color: var(--clay-bg-tinted, #EDF9F7) !important;
           }
         }
       `}</style>

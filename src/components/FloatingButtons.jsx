@@ -13,7 +13,7 @@ const FloatingButtons = () => {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 12px;
+            gap: 10px;
             transform: translateY(-50%);
             z-index: 1000;
           }
@@ -27,16 +27,21 @@ const FloatingButtons = () => {
             border-top-left-radius: 24px;
             border-bottom-left-radius: 24px;
             text-decoration: none;
-            box-shadow: -2px 4px 12px rgba(15, 23, 42, 0.1);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
             white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-right: none;
+            border: none;
+            box-shadow:
+              -4px 4px 12px rgba(15, 23, 42, 0.1),
+              inset 2px 2px 4px rgba(255, 255, 255, 0.15),
+              inset -1px -1px 3px rgba(0, 0, 0, 0.1);
           }
           .side-btn:hover {
             width: 160px;
-            box-shadow: -4px 6px 16px rgba(15, 23, 42, 0.15);
+            box-shadow:
+              -6px 6px 16px rgba(15, 23, 42, 0.15),
+              inset 3px 3px 6px rgba(255, 255, 255, 0.18),
+              inset -2px -2px 4px rgba(0, 0, 0, 0.12);
           }
           .side-btn-icon {
             min-width: 48px;
@@ -59,11 +64,13 @@ const FloatingButtons = () => {
           .side-btn:hover .side-btn-text {
             opacity: 1;
           }
+
+          /* Clay WhatsApp Button */
           .whatsapp-btn {
             position: fixed;
             bottom: 24px;
             right: 24px;
-            background-color: #25D366;
+            background: linear-gradient(135deg, #25D366 0%, #20ba5a 100%);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
@@ -74,15 +81,31 @@ const FloatingButtons = () => {
             font-weight: 700;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.95rem;
-            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             animation: pulse-glow 3s infinite;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s;
+            border: none;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow:
+              6px 6px 16px rgba(37, 211, 102, 0.25),
+              -3px -3px 8px rgba(255, 255, 255, 0.15),
+              inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+              inset -1px -1px 3px rgba(0, 0, 0, 0.1);
           }
           .whatsapp-btn:hover {
-            background-color: #20ba5a;
-            transform: scale(1.03);
+            background: linear-gradient(135deg, #20ba5a 0%, #1da851 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+              8px 8px 20px rgba(37, 211, 102, 0.3),
+              -4px -4px 10px rgba(255, 255, 255, 0.2),
+              inset 3px 3px 6px rgba(255, 255, 255, 0.22),
+              inset -2px -2px 4px rgba(0, 0, 0, 0.12);
+          }
+          .whatsapp-btn:active {
+            transform: translateY(1px);
+            box-shadow:
+              3px 3px 8px rgba(37, 211, 102, 0.2),
+              inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+              inset -2px -2px 4px rgba(255, 255, 255, 0.1);
           }
           .whatsapp-label {
             display: inline;

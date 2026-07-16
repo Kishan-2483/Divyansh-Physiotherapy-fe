@@ -9,7 +9,7 @@ const Hero = () => (
         min-height: 90vh;
         display: flex;
         align-items: center;
-        background: linear-gradient(135deg, #F0FDFA 0%, #E0F2FE 100%);
+        background: linear-gradient(160deg, #F0FDFA 0%, #F8FCFB 40%, #E6FAF7 100%);
         overflow: hidden;
         padding-top: 8rem;
         padding-bottom: 5rem;
@@ -22,7 +22,7 @@ const Hero = () => (
         height: 380px;
         border-radius: 50%;
         filter: blur(90px);
-        opacity: 0.35;
+        opacity: 0.3;
         mix-blend-mode: multiply;
         animation: floatBlob 12s infinite alternate ease-in-out;
         z-index: 1;
@@ -88,8 +88,9 @@ const Hero = () => (
         margin-bottom: 3.5rem;
       }
 
+      /* Clay-raised primary CTA */
       .btn-hero-primary {
-        background-color: var(--primary);
+        background: linear-gradient(135deg, var(--primary) 0%, #0D9488 100%);
         color: white !important;
         padding: 0.95rem 2rem;
         border-radius: 50px;
@@ -99,20 +100,37 @@ const Hero = () => (
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 8px 20px rgba(15, 118, 110, 0.2);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow:
+          8px 8px 18px rgba(15, 118, 110, 0.2),
+          -4px -4px 10px rgba(255, 255, 255, 0.3),
+          inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+          inset -1px -1px 3px rgba(0, 0, 0, 0.1);
       }
 
       .btn-hero-primary:hover {
-        background-color: var(--primary-hover);
+        background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
         transform: translateY(-2px);
-        box-shadow: 0 12px 28px rgba(15, 118, 110, 0.3);
+        box-shadow:
+          10px 10px 22px rgba(15, 118, 110, 0.25),
+          -5px -5px 12px rgba(255, 255, 255, 0.35),
+          inset 3px 3px 6px rgba(255, 255, 255, 0.22),
+          inset -2px -2px 4px rgba(0, 0, 0, 0.12);
       }
 
+      .btn-hero-primary:active {
+        transform: translateY(1px);
+        box-shadow:
+          3px 3px 8px rgba(15, 118, 110, 0.15),
+          inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+          inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+      }
+
+      /* Clay-raised secondary CTA */
       .btn-hero-secondary {
-        background-color: white;
+        background: #FFFFFF;
         color: var(--primary) !important;
-        border: 2px solid var(--primary);
+        border: 2px solid rgba(15, 118, 110, 0.12);
         padding: 0.95rem 2rem;
         border-radius: 50px;
         font-weight: 700;
@@ -121,32 +139,65 @@ const Hero = () => (
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: var(--shadow-sm);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow:
+          6px 6px 14px rgba(15, 118, 110, 0.06),
+          -3px -3px 8px rgba(255, 255, 255, 0.8),
+          inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+          inset -1px -1px 3px rgba(15, 118, 110, 0.04);
       }
 
       .btn-hero-secondary:hover {
-        background-color: var(--primary-light);
+        background: var(--primary-light);
+        border-color: var(--primary);
         transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
+        box-shadow:
+          8px 8px 18px rgba(15, 118, 110, 0.08),
+          -4px -4px 10px rgba(255, 255, 255, 0.9),
+          inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+          inset -2px -2px 4px rgba(15, 118, 110, 0.05);
       }
 
-      /* Trust Badges */
+      .btn-hero-secondary:active {
+        transform: translateY(1px);
+        box-shadow:
+          2px 2px 6px rgba(15, 118, 110, 0.06),
+          inset 2px 2px 5px rgba(15, 118, 110, 0.05),
+          inset -1px -1px 3px rgba(255, 255, 255, 0.5);
+      }
+
+      /* Trust Badges — Clay Chips */
       .hero-trust-badges {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         flex-wrap: wrap;
-        border-top: 1px solid rgba(15, 118, 110, 0.1);
         padding-top: 2rem;
+        border-top: none;
       }
 
       .trust-badge-item {
         display: flex;
         align-items: center;
         gap: 8px;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         font-weight: 600;
         color: var(--text-main);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        background: #FFFFFF;
+        box-shadow:
+          inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+          inset -1px -1px 3px rgba(15, 118, 110, 0.04),
+          4px 4px 10px rgba(15, 118, 110, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .trust-badge-item:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          inset 2px 2px 5px rgba(255, 255, 255, 0.9),
+          inset -2px -2px 4px rgba(15, 118, 110, 0.05),
+          6px 6px 14px rgba(15, 118, 110, 0.07);
       }
 
       .trust-badge-item svg {
@@ -154,10 +205,10 @@ const Hero = () => (
       }
 
       .trust-stars {
-        color: #FBBF24 !important; /* Gold stars */
+        color: #FBBF24 !important;
       }
 
-      /* Right Side Photo */
+      /* Right Side Photo — Clay Frame */
       .hero-right {
         position: relative;
         display: flex;
@@ -169,7 +220,7 @@ const Hero = () => (
         position: relative;
         width: 100%;
         max-width: 440px;
-        border-radius: 30px;
+        border-radius: 32px;
         overflow: visible;
       }
 
@@ -177,31 +228,42 @@ const Hero = () => (
         width: 100%;
         height: 500px;
         object-fit: cover;
-        border-radius: 30px;
-        box-shadow: var(--shadow-lg);
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 32px;
+        border: none;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow:
+          12px 12px 24px rgba(15, 118, 110, 0.10),
+          -8px -8px 20px rgba(255, 255, 255, 0.85),
+          inset 3px 3px 8px rgba(255, 255, 255, 0.4),
+          inset -2px -2px 6px rgba(15, 118, 110, 0.04);
       }
 
       .hero-img-main:hover {
         transform: scale(1.02);
+        box-shadow:
+          14px 14px 28px rgba(15, 118, 110, 0.12),
+          -10px -10px 24px rgba(255, 255, 255, 0.9),
+          inset 4px 4px 10px rgba(255, 255, 255, 0.5),
+          inset -3px -3px 8px rgba(15, 118, 110, 0.05);
       }
 
-      /* Floating Healthcare Badges */
+      /* Floating Healthcare Badges — Clay Style */
       .float-badge {
         position: absolute;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1.5px solid rgba(255, 255, 255, 0.6);
+        background: #FFFFFF;
+        border: none;
         padding: 0.75rem 1.25rem;
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(15, 118, 110, 0.1);
         display: flex;
         align-items: center;
         gap: 12px;
         z-index: 10;
         animation: floatAnim 6s infinite ease-in-out;
+        box-shadow:
+          6px 6px 14px rgba(15, 118, 110, 0.08),
+          -3px -3px 8px rgba(255, 255, 255, 0.85),
+          inset 2px 2px 4px rgba(255, 255, 255, 0.7),
+          inset -1px -1px 3px rgba(15, 118, 110, 0.04);
       }
 
       .float-badge-1 {
@@ -226,11 +288,14 @@ const Hero = () => (
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background-color: var(--primary-light);
+        background: var(--clay-bg-tinted, #EDF9F7);
         color: var(--primary);
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow:
+          inset 2px 2px 3px rgba(255, 255, 255, 0.8),
+          inset -1px -1px 2px rgba(15, 118, 110, 0.06);
       }
 
       .float-badge-text h5 {

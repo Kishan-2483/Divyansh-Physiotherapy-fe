@@ -23,8 +23,15 @@
   --shadow-md: 0 10px 25px -5px rgba(15, 118, 110, 0.08), 0 8px 16px -6px rgba(15, 118, 110, 0.04);
   --shadow-lg: 0 20px 40px -10px rgba(15, 118, 110, 0.12), 0 10px 20px -8px rgba(15, 118, 110, 0.06);
   --border-radius: 20px;     /* Premium rounded corners */
-  --border-radius-lg: 24px;  /* Larger rounded corners for section cards */
-  --border-radius-sm: 12px;
+  --border-radius-lg: 32px;  /* Larger rounded corners for section cards */
+  --border-radius-sm: 14px;
+
+  /* Claymorphism Design Tokens */
+  --clay-shadow: 10px 10px 20px rgba(15, 118, 110, 0.08), -6px -6px 16px rgba(255, 255, 255, 0.9), inset 3px 3px 6px rgba(255, 255, 255, 0.7), inset -2px -2px 5px rgba(15, 118, 110, 0.04);
+  --clay-shadow-hover: 12px 12px 24px rgba(15, 118, 110, 0.10), -8px -8px 20px rgba(255, 255, 255, 0.95), inset 4px 4px 8px rgba(255, 255, 255, 0.8), inset -3px -3px 6px rgba(15, 118, 110, 0.05);
+  --clay-shadow-pressed: 3px 3px 8px rgba(15, 118, 110, 0.06), inset 3px 3px 6px rgba(0, 0, 0, 0.06), inset -2px -2px 4px rgba(255, 255, 255, 0.4);
+  --clay-bg: #FFFFFF;
+  --clay-bg-tinted: #EDF9F7;
 }
 
 * {
@@ -97,34 +104,45 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-/* Professional Buttons */
+/* Professional Buttons — Claymorphism */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.75rem;
-  background-color: var(--primary);
+  padding: 0.85rem 1.85rem;
+  background: linear-gradient(135deg, var(--primary) 0%, #0D9488 100%);
   color: var(--text-light) !important;
-  border: 1px solid var(--primary);
-  border-radius: 6px;
+  border: none;
+  border-radius: 50px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    6px 6px 14px rgba(15, 118, 110, 0.18),
+    -3px -3px 8px rgba(255, 255, 255, 0.2),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.15),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn:hover {
-  background-color: var(--primary-hover);
-  border-color: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    8px 8px 18px rgba(15, 118, 110, 0.22),
+    -4px -4px 10px rgba(255, 255, 255, 0.25),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.18),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(1px);
+  box-shadow:
+    3px 3px 8px rgba(15, 118, 110, 0.12),
+    inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.1);
 }
 
 /* Header Banner - Sticks to the top, spanning full width */
@@ -234,16 +252,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline {
-  background: transparent;
+  background: #FFFFFF;
   color: var(--primary) !important;
-  border: 2px solid var(--primary);
-  box-shadow: var(--shadow-sm);
+  border: 2px solid rgba(15, 118, 110, 0.15);
+  box-shadow:
+    6px 6px 14px rgba(15, 118, 110, 0.06),
+    -3px -3px 8px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 3px rgba(15, 118, 110, 0.04);
 }
 
 .btn-outline:hover {
   background: var(--primary-light);
-  border-color: var(--primary-hover);
+  border-color: var(--primary);
   color: var(--primary-hover) !important;
+  transform: translateY(-2px);
+  box-shadow:
+    8px 8px 18px rgba(15, 118, 110, 0.08),
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+    inset -2px -2px 4px rgba(15, 118, 110, 0.05);
 }
 
 .hero-image {
@@ -379,35 +407,48 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(3px);
 }
 
-/* Doctor Section - Premium Glassmorphic Showcase Card */
+/* Doctor Section — Claymorphism Showcase Card */
 .doctor-section {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #FFFFFF;
   color: var(--text-main);
   border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(15, 118, 110, 0.08);
-  margin: 1rem 0; /* Reduced margin since section padding already handles spacing */
+  border: none;
+  margin: 1rem 0;
   padding: 4.5rem;
   display: flex;
   gap: 4.5rem;
   align-items: center;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--clay-shadow);
+  transition: all 0.4s ease;
+}
+
+.doctor-section:hover {
+  box-shadow: var(--clay-shadow-hover);
+  transform: translateY(-2px);
 }
 
 .doctor-image {
   flex: 1;
   max-width: 280px;
-  border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(15, 118, 110, 0.06);
+  border-radius: 28px;
+  border: none;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    8px 8px 16px rgba(15, 118, 110, 0.08),
+    -4px -4px 12px rgba(255, 255, 255, 0.85),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 3px rgba(15, 118, 110, 0.04);
 }
 
 .doctor-image:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    10px 10px 20px rgba(15, 118, 110, 0.10),
+    -6px -6px 14px rgba(255, 255, 255, 0.9),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+    inset -2px -2px 4px rgba(15, 118, 110, 0.05);
 }
 
 .doctor-image img {
@@ -439,37 +480,48 @@ h1, h2, h3, h4, h5, h6 {
 
 .doctor-info .credentials {
   display: inline-block;
-  background: var(--bg-alt);
-  border: 1px solid rgba(15, 118, 110, 0.08);
-  padding: 0.5rem 1.25rem;
-  border-radius: 8px;
+  background: var(--clay-bg-tinted);
+  border: none;
+  padding: 0.55rem 1.35rem;
+  border-radius: 50px;
   margin-bottom: 2rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   color: var(--primary);
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 3px rgba(15, 118, 110, 0.06),
+    3px 3px 8px rgba(15, 118, 110, 0.05);
 }
 
 .doctor-stats {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 2rem;
 }
 
 .stat-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(15, 118, 110, 0.06);
-  padding: 1.25rem 2rem;
-  border-radius: var(--border-radius-sm);
+  background: var(--clay-bg-tinted);
+  border: none;
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
   min-width: 150px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    6px 6px 12px rgba(15, 118, 110, 0.06),
+    -3px -3px 8px rgba(255, 255, 255, 0.85),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 3px rgba(15, 118, 110, 0.04);
 }
 
 .stat-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow:
+    8px 8px 16px rgba(15, 118, 110, 0.08),
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 4px rgba(15, 118, 110, 0.05);
 }
 
 .stat-card h4 {
@@ -487,7 +539,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* Pricing Section & Cards */
+/* Pricing Section & Cards — Claymorphism */
 .pricing-title {
   font-family: 'Manrope', sans-serif;
   font-size: 2.5rem !important;
@@ -507,41 +559,48 @@ h1, h2, h3, h4, h5, h6 {
 
 .pricing-card {
   padding: 3rem 2.25rem;
-  border-radius: var(--border-radius);
+  border-radius: 28px;
   text-align: center;
   position: relative;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  background: var(--bg-card);
-  border: 1px solid rgba(15, 118, 110, 0.06);
-  box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--clay-bg);
+  border: none;
+  box-shadow: var(--clay-shadow);
   display: flex;
   flex-direction: column;
 }
 
 .pricing-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: var(--clay-shadow-hover);
 }
 
 .pricing-card.popular {
-  border: 2px solid var(--primary);
-  box-shadow: var(--shadow-lg);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F0FDFA 100%);
+  border: none;
+  box-shadow:
+    12px 12px 24px rgba(15, 118, 110, 0.12),
+    -8px -8px 20px rgba(255, 255, 255, 0.9),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px rgba(15, 118, 110, 0.05),
+    0 0 0 2px rgba(15, 118, 110, 0.12);
 }
 
 .popular-badge {
   position: absolute;
-  top: -12px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #0D9488 100%);
   color: white;
-  padding: 0.3rem 1.25rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  padding: 0.4rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: var(--shadow-sm);
+  letter-spacing: 1.2px;
+  box-shadow:
+    4px 4px 10px rgba(15, 118, 110, 0.15),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.2);
 }
 
 .pricing-card h3 {
@@ -567,33 +626,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pricing-card li {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   display: flex;
   align-items: center;
   gap: 10px;
   color: var(--text-muted);
   font-size: 0.95rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.pricing-card li:hover {
+  background: var(--clay-bg-tinted);
 }
 
 .pricing-card li .check-icon {
   color: var(--primary);
   font-weight: bold;
   flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clay-bg-tinted);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.8), inset -1px -1px 2px rgba(15,118,110,0.06);
 }
 
 .pricing-card .btn {
   width: 100%;
 }
 
-/* Contact Section & Form */
+/* Contact Section & Form — Claymorphism */
 .contact-container {
   display: flex;
-  gap: 4rem;
-  background: var(--bg-card);
+  gap: 3.5rem;
+  background: var(--clay-bg);
   padding: 4rem;
   border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(15, 118, 110, 0.06);
-  box-shadow: var(--shadow-lg);
+  border: none;
+  box-shadow: var(--clay-shadow);
+  transition: all 0.4s ease;
+}
+
+.contact-container:hover {
+  box-shadow: var(--clay-shadow-hover);
 }
 
 .contact-info,
@@ -618,22 +698,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-detail {
-  background: var(--bg-alt);
-  border: 1px solid rgba(15, 118, 110, 0.04);
-  padding: 1.5rem;
-  border-radius: var(--border-radius-sm);
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--clay-bg-tinted);
+  border: none;
+  padding: 1.35rem 1.5rem;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 3px rgba(15, 118, 110, 0.05),
+    4px 4px 10px rgba(15, 118, 110, 0.04);
 }
 
 .contact-detail:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+  box-shadow:
+    inset 2px 2px 5px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 4px rgba(15, 118, 110, 0.06),
+    6px 6px 14px rgba(15, 118, 110, 0.06);
 }
 
 .contact-icon-svg {
@@ -656,19 +741,19 @@ h1, h2, h3, h4, h5, h6 {
 .booking-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .form-row-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 @media (max-width: 600px) {
   .form-row-2 {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 }
 
@@ -678,10 +763,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  font-size: 0.85rem;
+  margin-bottom: 0.45rem;
+  font-weight: 700;
+  font-size: 0.82rem;
   color: var(--text-main);
+  letter-spacing: 0.3px;
 }
 
 .input-with-icon {
@@ -704,22 +790,28 @@ h1, h2, h3, h4, h5, h6 {
 .input-with-icon select,
 .input-with-icon textarea {
   width: 100%;
-  padding: 0.85rem 1.25rem 0.85rem 2.75rem !important;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border-color);
-  border-radius: 10px;
+  padding: 0.9rem 1.25rem 0.9rem 2.75rem !important;
+  background: var(--clay-bg-tinted);
+  border: none;
+  border-radius: 14px;
   font-family: inherit;
   font-size: 0.95rem;
   color: var(--text-main);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    inset 2px 2px 4px rgba(15, 118, 110, 0.04),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.7);
 }
 
 .input-with-icon input:focus,
 .input-with-icon select:focus,
 .input-with-icon textarea:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+  background: #FFFFFF;
+  box-shadow:
+    inset 2px 2px 5px rgba(15, 118, 110, 0.06),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.8),
+    0 0 0 3px rgba(15, 118, 110, 0.08);
 }
 
 .input-with-icon:focus-within .input-icon-svg {
@@ -745,13 +837,24 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.5rem;
 }
 
-/* Footer */
+/* Footer — Dark Claymorphism */
 footer {
-  background: #0f172a;
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
   color: #94a3b8;
   text-align: center;
-  padding: 3rem 0;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 3.5rem 0;
+  border-top: none;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.2), transparent);
 }
 
 footer p {
@@ -813,7 +916,7 @@ footer p {
   color: white !important;
 }
 
-/* FAQ Accordion Styles */
+/* FAQ Accordion — Claymorphism */
 .faq-title {
   font-size: 2.25rem !important;
   color: var(--text-main) !important;
@@ -827,32 +930,40 @@ footer p {
 }
 
 .faq-item {
-  margin-bottom: 0.75rem;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
+  margin-bottom: 0.85rem;
+  border: none;
+  border-radius: 18px;
   overflow: hidden;
-  background-color: white;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease-in-out;
+  background: var(--clay-bg);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    6px 6px 14px rgba(15, 118, 110, 0.05),
+    -3px -3px 8px rgba(255, 255, 255, 0.85),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 3px rgba(15, 118, 110, 0.03);
 }
 
 .faq-item:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary);
+  box-shadow:
+    8px 8px 18px rgba(15, 118, 110, 0.07),
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+    inset -2px -2px 4px rgba(15, 118, 110, 0.04);
+  transform: translateY(-1px);
 }
 
 .faq-trigger {
   width: 100%;
-  padding: 1.25rem 1.5rem;
+  padding: 1.35rem 1.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: var(--text-main);
   transition: all 0.2s;
@@ -863,31 +974,43 @@ footer p {
 }
 
 .faq-item.active {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow:
+    8px 8px 18px rgba(15, 118, 110, 0.08),
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+    inset -2px -2px 4px rgba(15, 118, 110, 0.04);
 }
 
 .faq-item.active .faq-trigger {
   color: var(--primary);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid rgba(15, 118, 110, 0.06);
 }
 
 .faq-trigger-icon {
   font-size: 1.25rem;
   color: var(--primary);
-  transition: transform 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--clay-bg-tinted);
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.8), inset -1px -1px 2px rgba(15,118,110,0.05);
 }
 
 .faq-item.active .faq-trigger-icon {
   transform: rotate(45deg);
   color: var(--accent);
+  background: rgba(56, 189, 248, 0.08);
 }
 
 .faq-answer-wrapper {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  background: white;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
 }
 
 .faq-item.active .faq-answer-wrapper {
@@ -895,7 +1018,7 @@ footer p {
 }
 
 .faq-answer-content {
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem 1.75rem;
   color: var(--text-muted);
   line-height: 1.7;
   font-size: 0.95rem;
@@ -1060,13 +1183,17 @@ footer p {
   }
 }
 
-/* Glassmorphism & Gradient Utilities */
+/* Claymorphism & Gradient Utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(15, 118, 110, 0.08) !important;
-  box-shadow: var(--shadow-lg) !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  box-shadow: var(--clay-shadow) !important;
+  transition: all 0.4s ease !important;
+}
+
+.glass:hover {
+  box-shadow: var(--clay-shadow-hover) !important;
+  transform: translateY(-2px);
 }
 
 .gradient-text {
